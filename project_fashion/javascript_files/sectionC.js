@@ -44,8 +44,12 @@ const photoArr = [
   "/image/fashion/img9.jpg",
 ];
 
+const secCKeyframesB1 = [{ opacity: 0 }, { opacity: 1 }];
+const secCDurationB2 = { duration: 600, fill: "forwards", easing: "ease-out" };
+
 photos.forEach((v, i) => {
   v.addEventListener("mouseover", () => {
     leftImage.src = photoArr[i];
+    leftImage.animate(secCKeyframesB1, secCDurationB2);
   });
 });

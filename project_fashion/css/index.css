@@ -57,6 +57,7 @@ h2 {
 }
 
 /* 네비게이션 */
+
 nav > #sideBtn {
   position: fixed;
   z-index: 995;
@@ -243,21 +244,32 @@ body > .bg {
 }
 
 .sectionC > #gallery_leftSide {
+  position: relative;
   width: 50%;
+  height: 100vh;
 }
 
 .sectionC > #gallery_leftSide > img {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   object-fit: cover;
 }
 
-.sectionC > #gallery_leftSide > .borderBar {
+.sectionC > #gallery_leftSide::after {
   position: absolute;
+
+  display: block;
+  content: "";
+
+  width: calc(100% - 2rem);
+  height: calc(100% - 2.5rem);
+  top: 1rem;
+  left: 0.8rem;
+
   background-color: transparent;
-  border: 3px solid #eee;
-  z-index: 10;
+  border: 3px solid #fff;
+  z-index: 300;
 }
 
 .sectionC > #gallery_rightSide {
@@ -378,4 +390,113 @@ body > .bg {
 .sectionD > #shops > .txt > a:hover {
   background-color: #d5edeb;
   color: #403632;
+}
+
+/* 반응형 모바일 => 최대너비 768px */
+
+@media screen and (max-width: 768px) {
+  .sectionB > .sectionB_contents > .txtB > h2,
+  .sectionC > #gallery_rightSide > h2,
+  .sectionD > #shops > .txt > h2 {
+    font-size: 10vw;
+  }
+
+  body > .bg {
+    background-image: url(/image/fashion/bg-shadow.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+  }
+  /* nav */
+  nav > #sideTab {
+    width: max(20rem);
+    right: -20rem;
+
+    box-shadow: -10px 0px 15px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: -10px 0px 15px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: -10px 0px 15px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  /* secA */
+  .sectionA > .bgSectionA {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+  }
+
+  .sectionA > .txtA > h1 {
+    font-size: 3rem;
+  }
+
+  /* secB */
+  .sectionB > .sectionB_contents {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sectionB > .sectionB_contents > .bgSectionB {
+    text-align: center;
+  }
+
+  .sectionB > .sectionB_contents > .bgSectionB > img {
+    object-fit: contain;
+    max-width: 320px;
+    height: 100%;
+  }
+
+  /* secC */
+  .sectionC {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .sectionC > #gallery_leftSide {
+    width: 100%;
+    min-width: 320px;
+
+    padding: 0px 1rem;
+  }
+
+  .sectionC > #gallery_leftSide::after {
+    width: calc(100% - 4rem);
+    left: 1.9rem;
+  }
+  .sectionC > #gallery_rightSide {
+    width: 100vw;
+    min-width: 320px;
+
+    margin-bottom: 0;
+  }
+
+  .sectionC > #gallery_rightSide > #gallery_photos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .sectionC > #gallery_rightSide > #gallery_photos > .gallery_photo > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+
+  /* secD */
+  .sectionD {
+    height: 40rem;
+  }
+
+  .sectionD > #shops {
+    padding: 3rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sectionC > #gallery_leftSide > img {
+    width: 100%;
+  }
 }

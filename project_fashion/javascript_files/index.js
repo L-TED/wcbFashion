@@ -7,10 +7,7 @@ loading 화면(윈도우 전체 크기) 이후 시작
 */
 
 // animations-loading
-import { loadAnimation } from "./load.js";
-window.addEventListener("load", () => {
-  loadAnimation();
-});
+import "./load.js";
 // animations-navigator
 import "./nav.js";
 // sectionB-texts

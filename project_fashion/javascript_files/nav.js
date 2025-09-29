@@ -1,33 +1,60 @@
-const nav = document.querySelector("#sideBtn");
 const navTab = document.querySelector("#sideTab");
+const nav = document.querySelector("#sideBtn");
 const navClose = document.querySelector("#closeBtn");
-const navUserlists = document.querySelector("#navUserlists");
 
-const navKeyframesA1 = [
-  { transform: "translateX(0vw)" },
-  { transform: "translateX(-34vw)" },
+const dataNav = [
+  {
+    query: nav,
+    kf: [{ transform: "translateX(0vw)" }, { transform: "translateX(-34vw)" }],
+    dr: {
+      duration: 900,
+      fill: "forwards",
+      delay: 300,
+      easing: "ease-out",
+    },
+  },
+  {
+    query: navClose,
+    kf: [{ transform: "translateX(-32vw)" }, { transform: "translateX(0vw)" }],
+    dr: { duration: 300, fill: "forwards", delay: 300 },
+  },
 ];
-const navDurationA2 = {
-  duration: 900,
-  fill: "forwards",
-  delay: 300,
-  easing: "ease-out",
-};
 
-nav.addEventListener("click", () => {
-  navTab.animate(navKeyframesA1, navDurationA2);
-});
+dataNav.forEach((v) =>
+  v.query.addEventListener("click", () => {
+    navTab.animate(v.kf, v.dr);
+  })
+);
 
-// close 버튼
-const navKeyframesB1 = [
-  { transform: "translateX(-32vw)" },
-  { transform: "translateX(0vw)" },
+// 반응형 탭
+
+const dataNavResponsive = [
+  {
+    query: nav,
+    kf: [{ transform: "translateX(0vw)" }, { transform: "translateX(-20rem)" }],
+    dr: {
+      duration: 900,
+      fill: "forwards",
+      delay: 300,
+      easing: "ease-out",
+    },
+  },
+  {
+    query: navClose,
+    kf: [{ transform: "translateX(-20rem)" }, { transform: "translateX(0vw)" }],
+    dr: { duration: 300, fill: "forwards", delay: 300 },
+  },
 ];
-const navDurationB2 = { duration: 300, fill: "forwards", delay: 300 };
 
-navClose.addEventListener("click", () => {
-  navTab.animate(navKeyframesB1, navDurationB2);
-});
+if (window.innerWidth < 768) {
+  dataNavResponsive.forEach((v) =>
+    v.query.addEventListener("click", () => {
+      navTab.animate(v.kf, v.dr);
+    })
+  );
+}
+
+// window.innerWidth < 768 ? dataNav.forEach((v) =>) : dataNavResponsive.forEach((v) =>)
 
 // tab 내부 리스트 애니메이션
 const listA = document.querySelector("#liA");
