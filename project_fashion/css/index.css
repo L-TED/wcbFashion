@@ -1,0 +1,381 @@
+/*
+배경에 고정돼있는 사진 (완)
+
+두 번째 섹션에 이미지 뒤에 배경색 넣은 사각형 삽입
+세 번째 섹션 좌측에 애니메이션 반응 이미지 삽입/ 마우스 올리면 음영 생기는 우측 이미지들
+*/
+
+body {
+  color: #403632;
+}
+
+section {
+  position: relative;
+  height: 100vh;
+}
+
+h1,
+h2 {
+  font-weight: bold;
+  font-family: "Oswald", sans-serif;
+  color: #403632;
+}
+
+/* 로딩 화면 */
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+
+  background-color: #eee;
+  font-size: 2rem;
+
+  z-index: 1000;
+}
+
+#loading > #loader {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #403632;
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: "Oswald", sans-serif;
+}
+
+#underScreen {
+  position: absolute;
+  background-color: #d5edeb;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  z-index: 999;
+}
+
+/* 네비게이션 */
+nav > #sideBtn {
+  position: fixed;
+  z-index: 995;
+  padding: 0.5rem 1rem;
+  border: 1px solid #403632;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 4rem;
+  width: 4rem;
+
+  transition: 0.4s;
+
+  top: 1rem;
+  right: 1rem;
+
+  font-size: 1.5rem;
+}
+
+nav > #sideTab {
+  position: fixed;
+  z-index: 997;
+  width: 32vw;
+  height: 100vh;
+  right: -34vw;
+  background-color: #403632;
+
+  box-shadow: -10px 0px 15px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: -10px 0px 15px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: -10px 0px 15px 0px rgba(0, 0, 0, 0.4);
+}
+
+nav > #sideTab > #closeBtn {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d5edeb;
+  border-radius: 50%;
+  color: #d5edeb;
+  background-color: transparent;
+  height: 4rem;
+  width: 4rem;
+  font-size: 1.5rem;
+  transition: 0.4s;
+
+  top: 1rem;
+  right: 1rem;
+}
+
+nav > #sideBtn:hover {
+  cursor: pointer;
+  background-color: #d5edeb;
+}
+
+nav > #sideTab > #closeBtn:hover {
+  cursor: pointer;
+  color: #403632;
+  background-color: #d5edeb;
+}
+
+nav > #sideTab > #navUserlists {
+  width: 100%;
+  height: 100%;
+
+  padding: 8rem 2rem 2rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #d5edeb;
+  font-family: "Oswald", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+nav > #sideTab > #navUserlists > .list {
+  margin: 1.5rem 0px;
+}
+
+nav > #sideTab > #navUserlists > .list:hover {
+  color: #63dbd0;
+}
+
+/* 고정 뒷배경 */
+body > .bg {
+  background-image: url(/image/fashion/bg-shadow.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* 섹션 A */
+.sectionA {
+  width: 100%;
+}
+
+.sectionA > .bgSectionA {
+  background-image: url(/image/fashion/bg-hero.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+
+  width: 50%;
+  height: 100%;
+}
+
+.sectionA > .txtA {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9;
+}
+
+.sectionA > .txtA > h1 {
+  position: absolute;
+  width: 100%;
+  font-size: max(12vw);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 섹션 B */
+
+.sectionB {
+  margin: 10rem 0;
+  background-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 20%,
+    #eee 20%,
+    #eee 100%
+  );
+  background-position: 0 center;
+  background-size: 78rem 38rem;
+  background-repeat: no-repeat;
+}
+
+.sectionB > .sectionB_contents {
+  position: relative;
+  display: flex;
+}
+
+.sectionB > .sectionB_contents > .txtB {
+  max-width: 38rem;
+  margin: auto;
+  padding: 0 1rem;
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.sectionB > .sectionB_contents > .txtB > h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.sectionB > .sectionB_contents > .txtB > p {
+  text-align: left;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.sectionB > .sectionB_contents > .bgSectionB > img {
+  object-fit: contain;
+  max-width: 38rem;
+  height: 100%;
+}
+
+/* 섹션 C */
+.sectionC {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.sectionC > #gallery_leftSide {
+  width: 50%;
+}
+
+.sectionC > #gallery_leftSide > img {
+  width: 100%;
+  height: 100vh;
+
+  object-fit: cover;
+}
+
+.sectionC > #gallery_leftSide > .borderBar {
+  position: absolute;
+  background-color: transparent;
+  border: 3px solid #eee;
+  z-index: 10;
+}
+
+.sectionC > #gallery_rightSide {
+  width: 30vw;
+  max-width: 38rem;
+  margin: auto;
+  padding: 0px 1rem;
+  filter: blur(25px);
+  opacity: 0;
+}
+
+.sectionC > #gallery_rightSide > h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.sectionC > #gallery_rightSide > #gallery_photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 2vw;
+  margin: 1rem 0;
+}
+
+.sectionC > #gallery_rightSide > #gallery_photos > .gallery_photo {
+  transition: all 0.5s;
+}
+
+.sectionC > #gallery_rightSide > #gallery_photos > .gallery_photo > img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.sectionC > #gallery_rightSide > #gallery_photos > .gallery_photo:hover {
+  cursor: pointer;
+
+  box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.75);
+}
+
+/* 섹션 D */
+.sectionD {
+  width: 100%;
+  height: 50rem;
+
+  background-image: url(/image/fashion/bg-shop.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  margin-top: 20rem;
+
+  position: relative;
+}
+
+.sectionD > #shops {
+  position: absolute;
+  background-color: #fff;
+
+  text-align: center;
+
+  margin: auto;
+
+  width: 90vw;
+  max-width: 38rem;
+  padding: 4.5rem 3rem;
+  top: -8rem;
+  left: 0px;
+  right: 0px;
+}
+
+.sectionD > #shops > .txt {
+  opacity: 0;
+}
+
+.sectionD > #shops > .txt > h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+
+  margin-bottom: 3rem;
+}
+.sectionD > #shops > .txt > a {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  color: #fff;
+  background-color: #403632;
+  border: 1px solid #403632;
+  display: inline-block;
+
+  transition: all 0.4s;
+}
+
+.sectionD > #shops > .txt > h3 {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  font-size: 1.2rem;
+
+  font-weight: normal;
+}
+
+.sectionD > #shops > .txt > p {
+  width: 100%;
+  text-align: center;
+  line-height: 1.7;
+
+  font-weight: normal;
+}
+.sectionD > #shops > .txt > a:hover {
+  background-color: #d5edeb;
+  color: #403632;
+}

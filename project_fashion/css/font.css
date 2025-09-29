@@ -1,0 +1,10 @@
+/* <weight>: Use a value from 200 to 700
+ <uniquifier>: Use a unique and descriptive class name
+*/
+
+@font-face {
+  font-family: "Oswald", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+  font-weight: normal;
+  font-style: normal;
+}
